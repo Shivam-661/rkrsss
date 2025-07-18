@@ -31,10 +31,10 @@
         <a href="#imgModal">
           <img src="img/18072025.jpeg" alt="Bhajan Image"
             class="w-full h-auto object-cover cursor-pointer transition duration-300 hover:opacity-90" />
-        <div class="p-4">
-          <h2 class="text-lg font-semibold">Bhajan Program - 18/07/2025</h2>
-          <!-- <p class="text-sm font-semibold text-center">Click Here</p> -->
-        </div>
+          <div class="p-4">
+            <h2 class="text-lg font-semibold">Bhajan Program - 18/07/2025</h2>
+            <!-- <p class="text-sm font-semibold text-center">Click Here</p> -->
+          </div>
         </a>
       </div>
 
@@ -116,7 +116,19 @@
 
     </div>
   </div>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      // Intercept back button press (only works if Android sends event)
+      window.onpopstate = function () {
+        if (window.AndroidInterface && typeof AndroidInterface.exitApp === "function") {
+          AndroidInterface.exitApp(); // Call Android interface to exit app
+        }
+      };
 
+      // Push initial state so back button triggers onpopstate
+      history.pushState({}, '');
+    });
+  </script>
 </body>
 
 </html>
